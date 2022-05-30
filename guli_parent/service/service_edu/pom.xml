@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>service</artifactId>
+        <groupId>com.atguigu</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>service_edu</artifactId>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+    </properties>
+
+
+
+  <!--在test文件夹中写main方法遇到的错误，需要加上个这个build-->
+
+
+  <!--  把main函数换成了@Test测试方法运行，代码可以正常的运行，在重新换成main函数就还是不行。这里时因为maven项目执行main函数方法时，需要引入两个插件：maven-compiler-plugin和exec-maven-plugin插件。
+    **maven-compiler-plugin ：**对 Java 代码编译，可以指定项目源码的jdk版本，编译后的jdk版本，以及编码
+    exec-maven-plugin：用来执行class文件，其中插件配置中需指明执行类的路径。
+    这里只用关注exec-maven-plugin-->
+   <!-- <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                &lt;!&ndash;                <executions>&ndash;&gt;
+                &lt;!&ndash;                    <execution>&ndash;&gt;
+                &lt;!&ndash;                        <goals>&ndash;&gt;
+                &lt;!&ndash;                            <goal>java</goal>&ndash;&gt;
+                &lt;!&ndash;                        </goals>&ndash;&gt;
+                &lt;!&ndash;                    </execution>&ndash;&gt;
+                &lt;!&ndash;                </executions>&ndash;&gt;
+                <configuration>
+                    <classpathScope>test</classpathScope>
+                    &lt;!&ndash;                    <mainClass>com.itheima.test.MybatisTest</mainClass>&ndash;&gt;
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>-->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>
